@@ -60,6 +60,7 @@ endef
 # Detect available build environments.
 
 include $(call locate_incmake_file,env/app_extras/detect.mk)
+include $(call locate_incmake_file,env/ndcrc/detect.mk)
 include $(call locate_incmake_file,env/wcoss/detect.mk)
 include $(call locate_incmake_file,env/rdhpcs/detect.mk)
 include $(call locate_incmake_file,env/cisl/detect.mk)
@@ -67,6 +68,7 @@ include $(call locate_incmake_file,env/intel/detect.mk)
 include $(call locate_incmake_file,env/tacc/detect.mk)
 include $(call locate_incmake_file,env/lrz/detect.mk)
 include $(call locate_incmake_file,env/uname/detect.mk)
+
 
 ifeq (,$(list_build_env))
   $(error No build environment detected.  You must add or update the build enviornment logic in NEMS/src/incmake/env .)
