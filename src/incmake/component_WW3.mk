@@ -20,7 +20,12 @@ ifeq ($(true),$(call int_gt,$(call int_encode,$(STRLEN_WW3_SRCDIR)),$(call int_e
   $(error WW3_SRCDIR path length $(STRLEN_WW3_SRCDIR) is longer than maximum allowed $(MAX_LEN_WW3_SRCDIR) chars)
 endif
 
-WW3_CONFOPT ?= $(FULL_MACHINE_ID)
+#WW3_CONFOPT ?= $(FULL_MACHINE_ID)
+WW3_CONFOPT ?= intel
+#WW3_CONFOPT ?= Intel
+#WW3_CONFOPT ?= theia
+
+
 
 override WW3_CONF_FILE = $(WW3_SRCDIR)/bin/comp.tmpl
 
