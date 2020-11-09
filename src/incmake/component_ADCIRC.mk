@@ -28,9 +28,11 @@ build_ADCIRC: $(adcirc_mk)
 
 
 $(adcirc_mk): configure $(CONFDIR)/configure.nems   
-	+$(MODULE_LOGIC) ; cd $(ADCIRC_SRCDIR)/work; exec ./make_nuopc.sh $(esmf_env) $(comp_option) 
-	+$(MODULE_LOGIC) ; cd $(ADCIRC_SRCDIR)/cpl/nuopc ; exec $(MAKE) $(ADCIRC_ALL_OPTS) -f makefile.adc_cap.nuopc nuopcinstall \
+	+$(MODULE_LOGIC) ; cd $(ADCIRC_SRCDIR)/work; exec ./make_nuopc.sh $(esmf_env) $(comp_option)
+	+$(MODULE_LOGIC) ; cd $(ADCIRC_SRCDIR)/thirdparty/nuopc ; exec $(MAKE) $(ADCIRC_ALL_OPTS) -f makefile.adc_cap.nuopc nuopcinstall \
           DESTDIR=/ "INSTDIR=$(ADCIRC_BINDIR)"
+#	+$(MODULE_LOGIC) ; cd $(ADCIRC_SRCDIR)/cpl/nuopc ; exec $(MAKE) $(ADCIRC_ALL_OPTS) -f makefile.adc_cap.nuopc nuopcinstall \
+#          DESTDIR=/ "INSTDIR=$(ADCIRC_BINDIR)"
 	@echo ""
 	test -d "$(ADCIRC_BINDIR)"
 	@echo ""
@@ -42,7 +44,8 @@ $(adcirc_mk): configure $(CONFDIR)/configure.nems
 # Rule for cleaning the SRCDIR and BINDIR:
 
 clean_ADCIRC:
-	+cd $(ADCIRC_SRCDIR)/work ; exec $(MAKE) -k clean
+#	+cd $(ADCIRC_SRCDIR)/work ; exec $(MAKE) -k clean
+	+cd $(ADCIRC_SRCDIR)/work ; exec $(MAKE) -k clobber
 	@echo ""
 
 distclean_ADCIRC: clean_ADCIRC
@@ -50,6 +53,9 @@ distclean_ADCIRC: clean_ADCIRC
 	@echo ""
 
 distclean_NUOPC:
-	+cd $(ADCIRC_SRCDIR)/cpl/nuopc ; exec rm -f *.o *.mod libadc_cap.a adcirc.mk
+	+cd $(ADCIRC_SRCDIR)/thirdparty/nuopc ; exec rm -f *.o *.mod libadc_cap.a adcirc.mk
 	rm -rf $(ADCIRC_BINDIR)
 	@echo ""
+#	+cd $(ADCIRC_SRCDIR)/cpl/nuopc ; exec rm -f *.o *.mod libadc_cap.a adcirc.mk
+#	rm -rf $(ADCIRC_BINDIR)
+#	@echo ""
