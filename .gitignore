@@ -1,2 +1,27 @@
+# Python files
+
 *.pyc
 __pycache__
+
+# Compilation-related files
+
+*.mod
+*.o
+*.tmp.f90
+
+# Libraries/executables
+
+*.a
+NEMS.x
+
+# Auto-generated files
+
+src/ENS_Cpl/ENS_CplComp_ESMFMod_STUB.f90
+src/ESMFVersionDefine.h
+src/conf/configure.nems
+src/conf/configure.nems.NUOPC
+src/conf/externals.nems
+src/conf/modules.nems
+src/conf/modules.nems.csh
+src/conf/modules.nems.sh
+src/conf/test-results.mk
